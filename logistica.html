@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Logística de Ventas</title>
+    <link rel="stylesheet" href="logistica.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="logo">ELYSIUM</div>
+            <ul class="nav-menu">
+                <li><a href="#" class="active">Ventas</a></li>
+                <li><a href="#">Logística</a></li>
+                <li><a href="#">Inventario</a></li>
+                <li><a href="#">Reportes</a></li>
+            </ul>
+        </aside>
+        
+        <main class="main-content">
+            <section class="sales-summary">
+                <div class="summary-card">
+                    <h3>Ventas Totales</h3>
+                    <div class="value">$458,670</div>
+                </div>
+                <div class="summary-card">
+                    <h3>Ingresos del Mes</h3>
+                    <div class="value">$82,540</div>
+                </div>
+                <div class="summary-card">
+                    <h3>Pedidos Completados</h3>
+                    <div class="value">254</div>
+                </div>
+                <div class="summary-card">
+                    <h3>Productos Vendidos</h3>
+                    <div class="value">672</div>
+                </div>
+            </section>
+
+            <section>
+                <div class="filters">
+                    <button class="filter-btn">Este Mes</button>
+                    <button class="filter-btn">Último Trimestre</button>
+                    <button class="filter-btn">Año Actual</button>
+                </div>
+                <table class="sales-table">
+                    <thead>
+                        <tr>
+                            <th>ID Venta</th>
+                            <th>Producto</th>
+                            <th>Monto</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#ELY-001</td>
+                            <td>Celestial Chronograph</td>
+                            <td>$3500.00</td>
+                            <td>2024-12-10</td>
+                            <td><span class="status-badge completed">Completado</span></td>
+                        </tr>
+                        <tr>
+                            <td>#ELY-002</td>
+                            <td>Moonlight Necklace</td>
+                            <td>$1250.00</td>
+                            <td>2024-12-09</td>
+                            <td><span class="status-badge pending">Pendiente</span></td>
+                        </tr>
+                        <tr>
+                            <td>#ELY-003</td>
+                            <td>Solar Eclipse Watch</td>
+                            <td>$800.00</td>
+                            <td>2024-12-08</td>
+                            <td><span class="status-badge completed">Completado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Botón Atrás -->
+                 <a href="home.html">
+<button class="back-btn">Atrás</button>
+</a>
+
+<style>
+    .back-btn {
+        background-color: var(--negro-profundo);
+        color: var(--oro);
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--oro);
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 2rem;
+    }
+
+    .back-btn:hover {
+        background-color: var(--oro);
+        color: var(--negro-profundo);
+    }
+</style>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>

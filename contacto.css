@@ -1,0 +1,83 @@
+:root {
+    --negro-profundo: #0a0a0a;
+    --oro-metalico: #D4AF37;
+    --oro-oscuro: #8B7355;
+    --negro-suave: #1a1a1a;
+}
+
+body {
+    background-color: var(--negro-profundo);
+    color: var(--oro-metalico);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.contact-container {
+    background-color: var(--negro-suave);
+    border: 2px solid var(--oro-metalico);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(212,175,55,0.2);
+}
+
+.contact-info {
+    background-color: rgba(10,10,10,0.7);
+    border: 1px solid var(--oro-oscuro);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    background-color: rgba(15,15,15,0.8);
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.form-control {
+    background-color: var(--negro-profundo);
+    color: var(--oro-metalico);
+    border-color: var(--oro-oscuro);
+}
+
+.form-control:focus {
+    background-color: var(--negro-suave);
+    color: white;
+    border-color: var(--oro-metalico);
+    box-shadow: 0 0 10px rgba(212,175,55,0.3);
+}
+
+.btn-contact {
+    background-color: var(--oro-metalico);
+    color: var(--negro-profundo);
+    transition: all 0.3s ease;
+}
+
+.btn-contact:hover {
+    background-color: white;
+    color: var(--negro-suave);
+    transform: scale(1.05);
+}
+
+.contact-icon {
+    color: var(--oro-metalico);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    color: var(--oro-metalico);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: white;
+    transform: scale(1.2);
+}
