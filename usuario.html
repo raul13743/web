@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="usuario.css">
+    <title>Registro Elegante</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h2>Registrarse</h2>
+        <form id="registroForm">
+            <div class="form-group">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" required placeholder="Ingrese su nombre completo">
+                <div class="error" id="nombreError">Por favor ingrese su nombre completo</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" required placeholder="ejemplo@dominio.com">
+                <div class="error" id="emailError">Por favor ingrese un correo válido</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" required placeholder="Mínimo 8 caracteres">
+                <div class="password-strength">
+                    <div class="password-strength-bar" id="strengthBar"></div>
+                </div>
+                <div class="error" id="passwordError">La contraseña debe tener al menos 8 caracteres</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirmar Contraseña</label>
+                <input type="password" id="confirmPassword" required placeholder="Repita su contraseña">
+                <div class="error" id="confirmPasswordError">Las contraseñas no coinciden</div>
+            </div>
+            <a href="home.html">
+            <button type="submit">Crear Cuenta <a href="home.html"></a></button>
+        </a>
+        </form>
+        <div class="success-message" id="successMessage">
+            ¡Bienvenido! Su cuenta ha sido creada exitosamente.
+        </div>
+
+        <div class="social-login">
+            <p>o</p>
+            <p>regístrese con</p>
+            <div class="social-icons">
+                <div class="social-icon">
+                    <svg width="20" height="20" fill="#D4AF37" viewBox="0 0 24 24">
+                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/>
+                    </svg>
+                </div>
+                <div class="social-icon">
+                    <svg width="20" height="20" fill="#D4AF37" viewBox="0 0 24 24">
+                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                </div>
+                <div class="social-icon">
+                    <svg width="20" height="20" fill="#D4AF37" viewBox="0 0 24 24">
+                        <path d="M22.92 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.83 4.5 17.72 4 16.46 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16.47 21 21 14.06 21 8.07c0-.19 0-.39-.01-.58.84-.6 1.56-1.36 2.14-2.23z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            document.querySelectorAll('.error').forEach(error => error.style.display = 'none');
+            
+            let isValid = true;
+            
+            if (nombre.length < 3) {
+                document.getElementById('nombreError').style.display = 'block';
+                isValid = false;
+            }
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (password.length < 8) {
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                document.getElementById('registroForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                
+                console.log('Datos del registro:', {
+                    nombre,
+                    email,
+                    password
+                });
+            }
+        });
+
+        // Medidor de fortaleza de contraseña
+        document.getElementById('password').addEventListener('input', function(e) {
+            const password = e.target.value;
+            const strengthBar = document.getElementById('strengthBar');
+            let strength = 0;
+            
+            if (password.length >= 8) strength += 25;
+            if (password.match(/[A-Z]/)) strength += 25;
+            if (password.match(/[0-9]/)) strength += 25;
+            if (password.match(/[^A-Za-z0-9]/)) strength += 25;
+            
+            strengthBar.style.width = strength + '%';
+            
+            if (strength <= 25) {
+                strengthBar.style.background = '#ff4444';
+            } else if (strength <= 50) {
+                strengthBar.style.background = '#ffbb33';
+            } else if (strength <= 75) {
+                strengthBar.style.background = '#00C851';
+            } else {
+                strengthBar.style.background = '#D4AF37';
+            }
+            });
+        

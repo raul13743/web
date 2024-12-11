@@ -1,0 +1,119 @@
+:root {
+    --negro-profundo: #0a0a0a;
+    --oro-metalico: #D4AF37;
+    --oro-oscuro: #8B7355;
+    --negro-suave: #1a1a1a;
+}
+
+body {
+    background-color: var(--negro-profundo);
+    color: var(--oro-metalico);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.navbar {
+    background-color: rgba(10,10,10,0.95);
+    border-bottom: 2px solid var(--oro-metalico);
+}
+
+.navbar-brand {
+    color: var(--oro-metalico) !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-link {
+    color: var(--oro-metalico) !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: white !important;
+    transform: scale(1.1);
+}
+
+.watch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.watch-card {
+    background-color: var(--negro-suave);
+    border: 2px solid var(--oro-oscuro);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 20px rgba(212,175,55,0.2);
+}
+
+.watch-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(212,175,55,0.5);
+}
+
+.watch-image {
+    background-color: var(--negro-profundo);
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--oro-metalico);
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+}
+
+#carrito {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 400px;
+    height: 100%;
+    background-color: var(--negro-suave);
+    transition: 0.5s;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.modal-header {
+    border-bottom: 2px solid var(--oro-metalico);
+}
+
+.precio-oro {
+    color: var(--oro-metalico);
+    font-weight: bold;
+}
+
+.search-bar {
+    width: 250px;
+}
+.watch-image {
+    background-color: var(--negro-profundo);
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;  /* Aseguramos que la imagen no se salga del contenedor */
+}
+
+.watch-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Mantiene la imagen en proporción y cubre todo el contenedor */
+}

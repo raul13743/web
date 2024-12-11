@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Métodos de Pago - Quantum Watches</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="pago.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="payment-container">
+            <h1 class="text-center mb-4">Métodos de Pago</h1>
+            
+            <head>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+            </head>
+            
+            <div class="payment-icons">
+                <i class="fab fa-cc-visa fa-3x" alt="Visa"></i>
+                <i class="fab fa-cc-mastercard fa-3x" alt="Mastercard"></i>
+                <i class="fab fa-cc-paypal fa-3x" alt="PayPal"></i>
+                <i class="fab fa-cc-amex fa-3x" alt="American Express"></i>
+            </div>
+            
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="payment-method">
+                        <h4>Pago con Tarjeta de Crédito</h4>
+                        <p>Aceptamos todas las principales tarjetas de crédito con encriptación de máxima seguridad.</p>
+                    </div>
+                    <div class="payment-method">
+                        <h4>Transferencia Bancaria</h4>
+                        <p>Transferencia directa a nuestra cuenta bancaria internacional con confirmación inmediata.</p>
+                    </div>
+                    <div class="payment-method">
+                        <h4>Criptomonedas</h4>
+                        <p>Aceptamos pagos en Bitcoin, Ethereum y otras criptomonedas principales.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <form class="payment-form">
+                        <h3 class="text-center mb-4">Procesar Pago</h3>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre del Titular</label>
+                            <input type="text" class="form-control" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Número de Tarjeta</label>
+                            <input type="text" class="form-control" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Fecha de Expiración</label>
+                                <input type="text" class="form-control" placeholder="MM/AA" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">CVV</label>
+                                <input type="text" class="form-control" placeholder="123" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Monto a Pagar</label>
+                            <input type="text" class="form-control" id="montoTotal" readonly>
+                        </div>
+                        <button type="submit" class="btn btn-payment w-100">Pagar Ahora</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simular obtención del monto total del carrito
+        document.addEventListener('DOMContentLoaded', () => {
+            const montoTotal = localStorage.getItem('carritoTotal') || '';
+            document.getElementById('montoTotal').value = `$${montoTotal}`;
+        });
+
+        // Validación básica de formulario
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Pago procesado exitosamente. Gracias por su compra.');
+        });
+    </script>
+</body>
+</html>

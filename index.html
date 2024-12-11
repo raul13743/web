@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Watch Boutique</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <link rel="stylesheet" href="home1.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">ELYSIUM</div>
+            <div class="nav-links">
+                <a href="..home.html">Inicio</a>
+                <a href="coleccion.html">Colección</a>
+                <a href="i_corporativa.html">Historia</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="pago.html">Metodos de pagos</a>
+                <a href="logistica.html">Logistica</a>
+                <a href="usuario.html" id="userButton"><i class="fas fa-user"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Perfección en Tiempo</h1>
+            <p>Descubre nuestra colección de relojes de lujo, donde la artesanía tradicional se encuentra con la innovación moderna.</p>
+            <a href="coleccion.html">
+            <button class="btn">Explorar Colección</button>
+        </a>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="imagen/reloj1.webp" alt="Reloj Luxury 1">
+            </div>
+            <div class="product-info">
+                <h3>Celestial Chronograph</h3>
+                <p>Cronógrafo automático con cristal de zafiro y acabado en oro rosa de 18k.</p>
+                <div class="product-price">$24,999</div>
+                <button class="btn" onclick="addToCart(1)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                <img src="imagen/reloj3.jpg" alt="Reloj Luxury 2">
+            </div>
+            <div class="product-info">
+                <h3>Ocean Master</h3>
+                <p>Reloj de buceo profesional con resistencia al agua de 1000m y bisel de cerámica.</p>
+                <div class="product-price">$18,500</div>
+                <button class="btn" onclick="addToCart(2)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                <img src="imagen/reloj2.jpg" alt="Reloj Luxury 3">
+            </div>
+            <div class="product-info">
+                <h3>Royal Tourbillon</h3>
+                <p>Reloj de alta complicación con movimiento tourbillon y caja de platino de 950.</p>
+                <div class="product-price">$120,000</div>
+                <button class="btn" onclick="addToCart(3)">Añadir al Carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">×</button>
+            <h2>Carrito de Compras</h2>
+            <div class="cart-items" id="cartItems">
+                <!-- Carrito de productos será cargado aquí dinámicamente -->
+            </div>
+            <div class="cart-total">
+                <div class="total-breakdown">
+                    <div class="subtotal-line">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$10.00</span>
+                    </div>
+                    <div class="igv-line">
+                        <span>IGV (18%):</span>
+                        <span id="igv">$9.00</span>
+                    </div>
+                </div>
+                <div class="total-line">
+                    <span>Total:</span>
+                    <span id="totalPrice">$0</span>
+                </div>
+            </div>
+            <button class="btn" onclick="checkout()">Finalizar Compra</button>
+        </div>
+    </div>
+
+    <!-- Botón flotante del carrito -->
+    <div class="cart-float" onclick="openCartModal()">
+        <i class="fas fa-shopping-cart"></i>
+        <div class="cart-indicator" id="cartIndicator">0</div>
+    </div>
+
+    <!-- Notificación de éxito al añadir al carrito -->
+    <div class="notification" id="notification">
+        Producto añadido al carrito
+    </div>
+
+    <script>
+        let cart = [];
+        let cartIndicator = document.getElementById('cartIndicator');
+        let totalPrice = document.getElementById('totalPrice');
+        let notification = document.getElementById('notification');
+
+        function addToCart(productId) {
+            const product = getProductDetails(productId);
+            cart.push(product);
+            updateCartIndicator();
+            updateCartModal();
+            showNotification();
+        }
+
+        function getProductDetails(productId) {
+            const products = [
+                { id: 1, name: "Celestial Chronograph", price: 24999 },
+                { id: 2, name: "Ocean Master", price: 18500 },
+                { id: 3, name: "Royal Tourbillon", price: 120000 }
+            ];
+            return products.find(product => product.id === productId);
+        }
+
+        function updateCartIndicator() {
+            cartIndicator.textContent = cart.length;
+        }
+
+        function updateCartModal() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <img src="/api/placeholder/100/100" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                    </div>
+                    <div class="cart-item-price">$${item.price}</div>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+                total += item.price;
+            });
+
+            totalPrice.textContent = `$${total.toFixed(2)}`;
+        }
+
+        function showNotification() {
+            notification.classList.add('active');
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 3000);
+        }
+
+        function openCartModal() {
+            document.getElementById('cartModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function checkout() {
+            alert("Compra finalizada. ¡Gracias por tu compra!");
+            cart = [];
+            updateCartIndicator();
+            updateCartModal();
+            closeModal();
+        }
+    </script>
+    <style>
+        .christmas-offer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #FFD700, #000000);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        .christmas-offer:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .christmas-offer .discount {
+            font-size: 2em;
+            color: #FFD700;
+            display: block;
+            margin-top: 5px;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.05);
+            }
+        }
+
+        .christmas-offer::before {
+            content: '🎄';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="christmas-offer">
+        Oferta Navideña
+        <span class="discount">80% DESCUENTO</span>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section about-us">
+                <h3>Sobre Nosotros</h3>
+                <p>ELYSIUM es más que una boutique de relojes. Somos custodios de la tradición relojera, combinando artesanía excepcional con innovación contemporánea. Cada pieza cuenta una historia de precisión, elegancia y pasión.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+    
+            <div class="footer-section quick-links">
+                <h3>Navegación Rápida</h3>
+                <ul>
+                    <li><a href="home.html">Inicio</a></li>
+                    <li><a href="coleccion.html">Colección</a></li>
+                    <li><a href="i_corporativa.html">Historia</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="pago.html">Métodos de Pago</a></li>
+                    <li><a href="logistica.html">Logística</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section contact-info">
+                <h3>Contáctanos</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Melgar, Lima, Perú</p>
+                <p><i class="fas fa-phone"></i> +51 975855192</p>
+                <p><i class="fas fa-envelope"></i> servicio@elysium-watches.com</p>
+            </div>
+    
+            <div class="footer-section newsletter">
+                <h3>Mantente Informado</h3>
+                <p>Suscríbete a nuestro pagina para recibir ofertas exclusivas y novedades.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit" class="btn">Suscribir</button>
+                </form>
+            </div>
+        </div>
+    
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 ELYSIUM Watch . Todos los derechos reservados.
+            </div>
+            <div class="legal-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Servicio</a>
+                <a href="#">Política de Devoluciones</a>
+            </div>
+        </div>
+    </footer>
+    
+    <style>
+    .site-footer {
+        background-color: #1c1c1c;
+        color: #f4f4f4;
+        padding: 4rem 2rem;
+        font-family: 'Arial', sans-serif;
+    }
+    
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .footer-section {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .footer-section h3 {
+        border-bottom: 2px solid #gold;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        color: #FFD700;
+    }
+    
+    .footer-social {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .social-icon {
+        color: #f4f4f4;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+    }
+    
+    .social-icon:hover {
+        color: #FFD700;
+    }
+    
+    .quick-links ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .quick-links ul li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .quick-links ul li a {
+        color: #f4f4f4;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .quick-links ul li a:hover {
+        color: #FFD700;
+    }
+    
+    .newsletter-form {
+        display: flex;
+        margin-top: 1rem;
+    }
+    
+    .newsletter-form input {
+        flex-grow: 1;
+        padding: 0.5rem;
+        border: none;
+        background-color: #2c2c2c;
+        color: #f4f4f4;
+    }
+    
+    .newsletter-form .btn {
+        background-color: #FFD700;
+        color: #1c1c1c;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .newsletter-form .btn:hover {
+        background-color: #f4f4f4;
+    }
+    
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #333;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .legal-links a {
+        color: #f4f4f4;
+        text-decoration: none;
+        margin-left: 1rem;
+        transition: color 0.3s ease;
+    }
+    
+    .legal-links a:hover {
+        color: #FFD700;
+    }
+    
+    @media (max-width: 768px) {
+        .footer-container {
+            grid-template-columns: 1fr;
+        }
+    
+        .footer-bottom {
+            flex-direction: column;
+            text-align: center;
+        }
+    
+        .legal-links {
+            margin-top: 1rem;
+        }
+    
+        .legal-links a {
+            margin: 0 0.5rem;
+        }
+    }
+    </style>
+</body>
+</html>

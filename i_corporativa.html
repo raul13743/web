@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cronos Luxury Timepieces</title>
+    <link rel="stylesheet" href="Informacion.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <div class="logo">ELYSIUM</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="coleccion.html">Colecciones</a></li>
+                <li><a href="i_corporativa.html">Historia</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="pago.html">Metodos de pago</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Elysium Time</h1>
+            <p>Cada segundo cuenta. Cada movimiento importa. Diseñamos más que relojes: creamos legados eternos que capturan la esencia del tiempo con precisión y elegancia sin precedentes.</p>
+            <a href="coleccion.html" class="cta-button">Explorar Colecciones</a>
+        </div>
+    </section>
+
+    <section class="watch-showcase">
+        <div class="watch-info">
+            <h2>Colección Exclusiva</h2>
+            <p>Cada reloj Cronos es una obra maestra de ingeniería y diseño. Fabricados con los materiales más selectos, nuestros relojes son más que un accesorio: son un símbolo de estatus y sofisticación.</p>
+            <a href="coleccion.html" class="cta-button">Descubre Nuestra Colección</a>
+        </div>
+        <div class="watch-image">
+            <img src="imagen/reloj1.webp" alt="Cronos Luxury Watch" />
+        </div>
+    </section>
+
+    <section class="collections" id="colecciones">
+        <div class="container">
+            <h2>Nuestras Colecciones</h2>
+            <div class="collections-grid">
+                <div class="collection-item">
+                    <h3>Edición Clásica</h3>
+                    <p>Diseños atemporales que desafían las tendencias pasajeras. Perfecto para el ejecutivo moderno.</p>
+                </div>
+                <div class="collection-item">
+                    <h3>Serie Deportiva</h3>
+                    <p>Resistencia y estilo en cada segundo. Relojes diseñados para los espíritus aventureros.</p>
+                </div>
+                <div class="collection-item">
+                    <h3>Línea Contemporánea</h3>
+                    <p>Innovación y vanguardia fundidas en cada pieza. Para quienes marcan tendencia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 ELYSIUM. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
